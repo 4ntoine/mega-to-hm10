@@ -1,0 +1,9 @@
+Wiring
+======
+
+Arduino Mega2560  HM-10
+----------------  -----
+TX1 (pin 18)      UART_RX (pin 2)
+RX1 (pin 19)      UART_TX (pin 1)
+3.3V              3.3V
+GND               GND
