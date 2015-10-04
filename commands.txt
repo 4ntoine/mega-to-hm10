@@ -1,0 +1,104 @@
+HM-10 AT commands
+=================
+
+Full info: http://www.seeedstudio.com/wiki/images/c/cd/Bluetooth4_en.pdf
+
+
+1. Test
+-------
+
+	Send: AT
+	Receive: OK
+
+2. Firmware version
+-------------------
+
+	Send: AT+VERS?
+	Receive: HMSoft V532 (for example)
+
+3. Module name:
+---------------
+
+Get
+
+	Send: AT+NAME?
+	Receive: HM10
+
+Set
+	
+	Send: AT+NAMEbill_gates
+	Receive: OK+SetName:bill_gates
+
+4. Baud rate
+------------
+
+Get
+
+	Send: AT+BAUD?
+	Receive: OK+Get:0
+
+Set
+
+	Send: AT+BAUD1 (baud rate 19200, see baud rates below)
+	Receive: OK+Set:1
+
+Baud rates
+
+	0---------9600
+	1---------19200
+	2---------38400
+	3---------57600
+	4---------115200
+	5---------4800
+	6---------2400
+	7---------1200
+	8---------230400
+	Default: 0(9600) 
+
+5. Work mode
+------------
+
+Get
+
+	Send: AT+MODE?
+	Receive: AT+MODE0
+
+Set
+
+	Send: AT+MODE1
+	Receive: OK+Set:1
+
+Modes description
+
+	Mode 0:
+
+		Before establishing a connection, you can use the AT command
+		configuration module through UART.
+		After established a connection, you can send data to remote side from
+		each other.
+
+	Mode 1:
+
+		Before establishing a connection, you can use the AT command
+		configuration module through UART.
+		After established a connection, you can send data to remote side. Remote
+		side can do fellows:
+		Send AT command configuration module.
+		Collect PIO04 to the PIO11 pins input state of HM-10.
+		Collect PIO03 pins input state of HM-11.
+		Remote control PIO2, PIO3 pins output state of HM-10.
+		Remote control PIO2 pin output state of HM-11.
+		Send data to module UART port (not include any AT command and per
+		package must less than 20 bytes).
+
+	Mode 2:
+
+		Before establishing a connection, you can use the AT command
+		configuration module through UART.
+		After established a connection, you can send data to remote side. Remote
+		side can do fellows:
+		Send AT command configuration module.
+		Remote control PIO2 to PIO11 pins output state of HM-10.
+		Remote control PIO2, PIO3 pins output state of HM-11.
+		Send data to module UART port (not include any AT command and per
+		package must less than 20 bytes). 
