@@ -33,3 +33,6 @@ To configure for Apploader you will need to set **mode 1** (`AT+MODE1`) and baud
 ### Example
 
   ![example](example.png)
+
+
+Anton Smirnov, 2015
