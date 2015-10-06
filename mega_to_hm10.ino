@@ -24,7 +24,7 @@ long bauds[] = {
 
 bool detectBleBaudRate() {
   Serial.println("Detecting BLE baud rate:");
-  for (int i=0; i<sizeof(bauds); i++) {
+  for (int i=0; i<(sizeof(bauds)/sizeof(long)); i++) {
     Serial.write("Checking ");
     long cur_baud = bauds[i];
     Serial.println(cur_baud, DEC);
