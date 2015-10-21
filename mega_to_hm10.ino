@@ -60,30 +60,17 @@ void loop() {
   // read from BLE (HM-10)
   if (Serial1.available()) {
     Serial.write("ble: ");
-    while (Serial1.available()) {
-        ledHIGH = 1 - ledHIGH;
-        int inByte = Serial1.read();
-        digitalWrite(led, ledHIGH);
-     
-        Serial.write(inByte);
-        Serial1.write(inByte);
-        delay(2);
-     }
-     Serial.write('\n');
+    String str = Serial1.readString();
+    Serial.print(str);
+    Serial.write('\n');
   }
 
   // read from USB (Arduino Terminal)
   if (Serial.available()) {
     Serial.write("usb: ");
-    while (Serial.available()) {
-      ledHIGH = 1 - ledHIGH;
-      int inByte = Serial.read();
-      digitalWrite(led, ledHIGH);
-    
-      Serial.write(inByte); // echo
-      Serial1.write(inByte);
-      delay(2);
-    }
+    String str = Serial.readString();
+    Serial1.print(str);
+    Serial.print(str);
     Serial.write('\n');
   }
 }
